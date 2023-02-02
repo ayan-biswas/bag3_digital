@@ -7,32 +7,6 @@ bbox:
   - 238
   - 164
 terminals:
-  VDD:
-    obj:
-      - 0
-      - layer: 229
-        purpose: 4294967295
-        net: ""
-        bbox:
-          - 96
-          - 156
-          - 104
-          - 164
-    stype: 1
-    ttype: 2
-  VSS:
-    obj:
-      - 0
-      - layer: 229
-        purpose: 4294967295
-        net: ""
-        bbox:
-          - 96
-          - -4
-          - 104
-          - 4
-    stype: 2
-    ttype: 2
   in<1:0>:
     obj:
       - 0
@@ -46,6 +20,32 @@ terminals:
           - 84
     stype: 0
     ttype: 0
+  VSS:
+    obj:
+      - 0
+      - layer: 229
+        purpose: 4294967295
+        net: ""
+        bbox:
+          - 96
+          - -4
+          - 104
+          - 4
+    stype: 2
+    ttype: 2
+  VDD:
+    obj:
+      - 0
+      - layer: 229
+        purpose: 4294967295
+        net: ""
+        bbox:
+          - 96
+          - 156
+          - 104
+          - 164
+    stype: 1
+    ttype: 2
   out:
     obj:
       - 0
@@ -200,7 +200,7 @@ shapes:
       purpose: 4294967295
       net: ""
       ang_start: 5.3558900891779739
-      ang_stop: 0.92729521800161219
+      ang_stop: 0.9272952180016122
       bbox:
         - 80
         - 60
@@ -287,22 +287,22 @@ shapes:
 instances:
   {}
 props:
-  interfaceLastChanged:
-    - 4
-    - time_val: 1614060273
-  partName:
-    - 3
-    - nor
   pin#:
     - 0
     - 19
+  interfaceLastChanged:
+    - 4
+    - time_val: 1614060273
+  vendorName:
+    - 3
+    - ""
+  partName:
+    - 3
+    - nor
   portOrder:
     - 5
     - name: ILList
       bin_val: ("out" "VDD" "VSS" "in<1:0>")
-  vendorName:
-    - 3
-    - ""
 app_defs:
   _dbLastSavedCounter:
     - 0
