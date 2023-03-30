@@ -617,16 +617,16 @@ props:
     - 5
   schGeometryLastUpdated:
     - 0
-    - 713
+    - 730
   schGeometryVersion:
     - 3
     - sch.ds.gm.1.4
   lastSchematicExtraction:
     - 4
-    - time_val: 1675235588
+    - time_val: 1675372702
   connectivityLastUpdated:
     - 0
-    - 713
+    - 730
   schXtrVersion:
     - 3
     - sch.10.0
@@ -636,10 +636,10 @@ props:
 app_defs:
   _dbLastSavedCounter:
     - 0
-    - 713
+    - 730
   _dbvCvTimeStamp:
     - 0
-    - 713
+    - 730
   cdbRevision:
     - 0
     - 227612
