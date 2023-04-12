@@ -94,9 +94,9 @@ class InverterBetaDesigner(DesignerBase):
     """
 
     def __init__(self, root_dir: Path, sim_db: SimulationDB, dsn_specs: Mapping[str, Any]) -> None:
-        self._is_lay = None
-        self._dut_class = None
-        self._base_gen_specs = None
+        self._is_lay: bool = True
+        self._dut_class: Union[Type[TemplateBase], Type[Module]] = None
+        self._base_gen_specs: Param = None
         super().__init__(root_dir, sim_db, dsn_specs)
 
     @classmethod
