@@ -162,7 +162,6 @@ class bag3_digital__div2_chain(Module):
 
         self.reconnect_instance_terminal(div_name_list[0], 'clk', clk_net_post_gate)
 
-
         inv_clk_div_list = [None] + list(inv_clk_div_list)
         for i, (div_name, div_params, buf_name, buf_params, inv_clk_div) in \
                 enumerate(zip(div_name_list, div_params_list, clk_div_buf_name_list, clk_div_buf_params_list,
