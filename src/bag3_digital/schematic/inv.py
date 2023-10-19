@@ -54,8 +54,8 @@ class bag3_digital__inv(Module):
             stack_n='number of transistors in a stack.',
             p_in_gate_numbers='a List indicating input number of the gate',
             n_in_gate_numbers='a List indicating input number of the gate',
-            has_vtop='True if PMOS drain is not connected to VDD, but instead VTOP',
-            has_vbot='True if NMOS drain is not connected to VSS, but instead VBOT',
+            has_vtop='True if PMOS source is connected to VTOP instead of VDD; False by default',
+            has_vbot='True if NMOS source is connected to VBOT instead of VSS; False by default',
             separate_out='True to separate pmos and nmos outputs; False by default.',
         )
 
