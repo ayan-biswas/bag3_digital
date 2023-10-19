@@ -96,6 +96,7 @@ class InvCore(MOSBase):
             vertical_out='True to draw output on vertical metal layer.',
             vertical_sup='True to have supply unconnected on conn_layer.',
             vertical_in='False to not draw the vertical input wire when is_guarded = True.',
+            separate_out='True to separate pmos and nmos outputs; False by default.',
         )
 
     @classmethod
@@ -115,6 +116,7 @@ class InvCore(MOSBase):
             vertical_out=True,
             vertical_sup=False,
             vertical_in=True,
+            separate_out=False,
         )
 
     def draw_layout(self) -> None:
@@ -137,6 +139,7 @@ class InvCore(MOSBase):
         vertical_out: bool = self.params['vertical_out']
         vertical_sup: bool = self.params['vertical_sup']
         vertical_in: bool = self.params['vertical_in']
+        separate_out: bool = self.params['separate_out']
 
         if seg_p <= 0:
             seg_p = seg
@@ -179,9 +182,14 @@ class InvCore(MOSBase):
             vm_tidx = sig_locs.get('out', grid.coord_to_track(vm_layer, pout.middle,
                                                               mode=RoundMode.NEAREST))
             vm_tid = TrackID(vm_layer, vm_tidx, width=tr_w_v)
-            self.add_pin('out', self.connect_to_tracks([pout, nout], vm_tid))
+            if separate_out:
+                pout = self.connect_to_tracks(pout, vm_tid, min_len_mode=MinLenMode.MIDDLE)
+                nout = self.connect_to_tracks(nout, vm_tid, min_len_mode=MinLenMode.MIDDLE)
+            else:
+                self.add_pin('out', self.connect_to_tracks([pout, nout], vm_tid))
         else:
-            self.add_pin('out', [pout, nout], connect=True)
+            if not separate_out:
+                self.add_pin('out', [pout, nout], connect=True)
             vm_tidx = None
 
         if is_guarded:
@@ -222,8 +230,8 @@ class InvCore(MOSBase):
             self.add_pin('pin', in_warr, hide=True)
             self.add_pin('nin', in_warr, hide=True)
 
-        self.add_pin(f'pout', pout, hide=True)
-        self.add_pin(f'nout', nout, hide=True)
+        self.add_pin(f'pout', pout, hide=not separate_out)
+        self.add_pin(f'nout', nout, hide=not separate_out)
 
         xr = self.bound_box.xh
         if vertical_sup:
@@ -252,6 +260,7 @@ class InvCore(MOSBase):
             th_p=thp,
             stack_p=stack_p,
             stack_n=stack_n,
+            separate_out=separate_out,
         )
 
 
